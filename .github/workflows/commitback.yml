@@ -1,5 +1,7 @@
 name: Push commit
-on: push
+on: 
+  push:
+     branches: [main]
 permissions:
   contents: write
 jobs:
@@ -11,5 +13,7 @@ jobs:
         run: date +%s > report.txt
       - name: Commit report
         run: |
+          git config --global user.email "repobot@lol.com"
+          git config --global user.name "Friendly Repo Bot"
           git commit -am "Automated report"
           git push
